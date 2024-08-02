@@ -5,7 +5,7 @@
 @Param {(s: string) => void} onChange - The onChange callback
 */
 
-import { useId } from "react";
+import { forwardRef, useId } from "react";
 
 interface InpuInterface {
   name: string;
@@ -14,19 +14,14 @@ interface InpuInterface {
   value: number | string | string[];
   onChange: (s) => void;
   type?: string;
-  inputRef?;
 }
-function Input({
-  name,
-  label,
-  placeholder,
-  value,
-  onChange,
-  type,
-  inputRef,
-}: InpuInterface) {
+export const Input = forwardRef(function Input(
+  { name, label, placeholder, value, onChange, type }: InpuInterface,
+  ref
+) {
   const id = useId();
-  console.log("ref ==>", inputRef?.current);
+
+  console.log("ref ==>", ref);
   return (
     <div className="mb-4">
       <label
@@ -36,7 +31,7 @@ function Input({
         {label}
       </label>
       <input
-        ref={inputRef}
+        ref={ref}
         name={name}
         className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         id={id}
@@ -47,6 +42,6 @@ function Input({
       />
     </div>
   );
-}
+});
 
-export default Input;
+Input.displayName = " InputComponent";

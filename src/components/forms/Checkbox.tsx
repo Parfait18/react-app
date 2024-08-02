@@ -14,9 +14,9 @@ function Checkbox({ id, label, checked, onChange }: CheckboxInterface) {
   return (
     <div className=" mb-6">
       <div className="md:w-1/3"></div>
-      <label htmlFor={id} className="md:w-2/3 block text-gray-500 font-bold">
+      <label htmlFor={id} className="md:w-2/3 block text-gray-500 font-medium">
         <input
-          className="mr-2 leading-tight"
+          className="mr-2 leading-tight rounded-sm focus:outline-none  focus:border-blue-50"
           type="checkbox"
           id={id}
           checked={checked}
